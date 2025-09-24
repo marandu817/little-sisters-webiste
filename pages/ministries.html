@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the ministries of The Little Sisters of St. Francis – North Eastern Region, Tanzania, including education, healthcare, and community outreach.">
+  <title>Ministries - The Little Sisters of St. Francis</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+  <style>
+    :root {
+      --primary-color: #2c5aa0;
+      --secondary-color: #8b4513;
+      --accent-color: #d4af37;
+      --text-dark: #2c3e50;
+      --text-light: #6c757d;
+      --bg-light: #f8f9fa;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --shadow-hover: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary-color) !important;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--text-dark) !important;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem !important;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-color) !important;
+      background: rgba(44,90,160,0.1);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      height: 100vh; /* full screen */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      min-height: 400px; /* Minimum height to ensure arrow fits */
+    }
+
+    .hero-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* fills without black borders */
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--accent-color);
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+      z-index: 3;
+    }
+
+    .scroll-down:hover {
+      color: var(--white);
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translate(-50%, 0);
+      }
+      40% {
+        transform: translate(-50%, -10px);
+      }
+      60% {
+        transform: translate(-50%, -5px);
+      }
+    }
+
+    .hero-section h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .hero-section .lead {
+      font-size: 1.3rem;
+      font-weight: 300;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6); /* darkness level */
+        z-index: 2;
+    }
+
+    /* Sections */
+    .section-padding {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .ministries-section {
+      background: linear-gradient(135deg, var(--bg-light), #e2d4d4);
+    }
+
+    /* Cards */
+    .ministry-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      height: 100%;
+      border: none;
+    }
+
+    .ministry-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .ministry-card .card-img-top {
+      width: 100%;
+      height: 200px; /* Fixed height to contain image */
+      object-fit: cover; /* Ensures image fills the space without overflow */
+      transition: all 0.3s ease;
+    }
+
+    .ministry-card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+
+    .ministry-card .card-body {
+      padding: 2rem;
+    }
+
+    .ministry-card .card-title {
+      color: var(--primary-color);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .ministry-card .card-text {
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color), #3a6bb0);
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(44, 90, 160, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(44, 90, 160, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--text-dark), #34495e);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    footer .bible-verse {
+      font-style: italic;
+      color: var(--accent-color);
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 60vh;
+      }
+      .section-padding {
+        padding: 3rem 0;
+      }
+      .ministry-card .card-img-top {
+        height: 150px; /* Adjusted height for smaller screens */
+      }
+      .scroll-down {
+        font-size: 1.5rem;
+        bottom: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <i class="fas fa-cross me-2"></i>Little Sisters of St. Francis
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link active" href="ministries.html">Ministries</a></li>
+          <li class="nav-item"><a class="nav-link" href="join.html">Join Us</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li> -->
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-section">
+    <img src="../assets/images/ministries/hero.jpg" alt="Hero" class="hero-img">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Our Ministries</h1>
+      <p class="lead">Serving the Community with Love and Compassion</p>
+    </div>
+    <a href="#ministries" class="scroll-down">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- Ministries -->
+  <section id="ministries" class="section-padding ministries-section">
+    <div class="container">
+      <h2 class="section-title">Our Core Ministries</h2>
+      <p class="text-center mb-5 fade-in-up">The Little Sisters of St. Francis are dedicated to serving communities in North Eastern Tanzania through various ministries.</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card ministry-card fade-in-up">
+            <img src="../assets/images/ministries/education.jpg" class="card-img-top" alt="Education Ministry">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-book me-2"></i>Education</h5>
+              <p class="card-text">Empowering communities through quality education, from early childhood development to adult literacy programs.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card ministry-card fade-in-up">
+            <img src="../assets/images/ministries/healthcare.jpg" class="card-img-top" alt="Healthcare Ministry">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-stethoscope me-2"></i>Healthcare</h5>
+              <p class="card-text">Providing comprehensive medical care to underserved communities, including maternal health and child nutrition.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card ministry-card fade-in-up">
+            <img src="../assets/images/ministries/social.jpg" class="card-img-top" alt="Social Work">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-hands-helping me-2"></i>Social Work</h5>
+              <p class="card-text">Supporting children with disabilities in the Same District of Kilimanjaro Region, Tanzania.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4 fade-in-up">
+        <a href="contact.html" class="btn btn-primary"><i class="fas fa-envelope me-2"></i>Get Involved</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 The Little Sisters of St. Francis - North Eastern Region, Tanzania. All rights reserved.</p>
+      <p class="bible-verse"><i class="fas fa-quote-left me-2"></i>"Serve the Lord with gladness."<br><small>– Psalm 100:2</small></p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
